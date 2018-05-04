@@ -9,12 +9,16 @@ This package can be installed via [Nimble](https://github.com/nim-lang/nimble):
 ```
 > nimble install nimgen
 
-> nimble install libsvm
+> git clone https://github.com/genotrance/libsvm
+> cd libsvm
+> nimble install -y
 ```
 
 This will download, wrap and install the libsvm wrapper in the standard Nimble package location, typically ~/.nimble. Once installed, it can be imported into any Nim program.
 
 __Usage__
+
+Module documentation can be found [here](http://nimgen.genotrance.com/libsvm).
 
 ```nim
 import libsvm
