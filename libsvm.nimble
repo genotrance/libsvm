@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.1"
+version       = "0.1.2"
 author        = "genotrance"
 description   = "libsvm wrapper for Nim"
 license       = "MIT"
@@ -9,7 +9,7 @@ skipDirs = @["tests"]
 
 # Dependencies
 
-requires "nimgen >= 0.1.4"
+requires "nimgen >= 0.2.3"
 
 import distros
 import ospaths
@@ -19,9 +19,7 @@ if detectOs(Windows):
     cmd = "cmd /c "
 
 task setup, "Checkout and generate":
-    rmFile("libsvm.nim")
     exec cmd & "nimgen libsvm.cfg"
-    mvFile("libsvm"/"svm.nim", "libsvm.nim")
 
 before install:
     setupTask()
