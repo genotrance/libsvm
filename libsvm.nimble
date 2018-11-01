@@ -27,5 +27,4 @@ before install:
   setupTask()
 
 task test, "Run tests":
-  withDir("tests"):
-    exec "nim cpp -r svmtest"
+  exec "nim cpp -r tests/t" & name & ".nim"

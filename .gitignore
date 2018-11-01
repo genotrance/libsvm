@@ -3,4 +3,4 @@ libsvm.nim
 nimcache
 *.exe
 *.swp
-*test
+tlibsvm*
