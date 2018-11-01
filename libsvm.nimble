@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.2"
+version       = "0.1.3"
 author        = "genotrance"
 description   = "libsvm wrapper for Nim"
 license       = "MIT"
@@ -9,21 +9,23 @@ skipDirs = @["tests"]
 
 # Dependencies
 
-requires "nimgen >= 0.2.3"
+requires "nimgen >= 0.4.0"
 
-import distros
-import ospaths
+var
+  name = "libsvm"
+  cmd = when defined(Windows): "cmd /c " else: ""
 
-var cmd = ""
-if detectOs(Windows):
-    cmd = "cmd /c "
+mkDir(name)
 
 task setup, "Checkout and generate":
-    exec cmd & "nimgen libsvm.cfg"
+  if gorgeEx(cmd & "nimgen").exitCode != 0:
+    withDir(".."):
+      exec "nimble install nimgen -y"
+  exec cmd & "nimgen " & name & ".cfg"
 
 before install:
-    setupTask()
+  setupTask()
 
 task test, "Run tests":
-    withDir("tests"):
-        exec "nim cpp -r svmtest"
+  withDir("tests"):
+    exec "nim cpp -r svmtest"
