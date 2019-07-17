@@ -3,14 +3,14 @@ import os
 import nimterop/[cimport, git]
 
 const
-  base = currentSourcePath.parentDir()
+  base = currentSourcePath.parentDir() / "build"
 
 echo base
 
 static:
   cDebug()
 
-  gitPull("https://github.com/cjlin1/libsvm", base/"libsvm", """
+  gitPull("https://github.com/cjlin1/libsvm", base, """
 svm.h
 svm.cpp
 """)
@@ -23,6 +23,6 @@ cPlugin:
     if sym.kind == nskProc and sym.name.contains("svm_"):
       sym.name = sym.name.replace("svm_", "")
 
-cCompile(base/"libsvm/svm.cpp")
+cCompile(base/"svm.cpp")
 
-cImport(base/"libsvm/svm.h")
+cImport(base/"svm.h")

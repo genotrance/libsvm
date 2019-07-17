@@ -14,7 +14,7 @@ This will download, wrap and install the libsvm wrapper in the standard Nimble p
 
 __Usage__
 
-Module documentation can be found [here](http://nimgen.genotrance.com/libsvm).
+Module documentation can be found [here](https://genotrance.github.io/libsvm/libsvm.html).
 
 ```nim
 import libsvm
