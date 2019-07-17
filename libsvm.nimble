@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.4"
+version       = "0.2.0"
 author        = "genotrance"
 description   = "libsvm wrapper for Nim"
 license       = "MIT"
@@ -12,4 +12,4 @@ skipDirs = @["tests"]
 requires "nimterop >= 0.1.0"
 
 task test, "Run tests":
-  exec "nim cpp -r tests/tlibsvm.nim"
+  exec "nim cpp --path:. -r tests/tlibsvm.nim"
